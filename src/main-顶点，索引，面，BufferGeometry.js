@@ -45,41 +45,13 @@ geometry.setAttribute("position", new THREE.BufferAttribute(vertices, 3))
 // 创建索引属性
 geometry.setIndex(new THREE.BufferAttribute(indices, 1))
 
-// 设置两个顶点组，形成两个材质
-// 参数分别为:起始索引，顶点个数，材质索引
-geometry.addGroup(0, 3, 0)
-geometry.addGroup(3, 3, 1)
-
 // 创建材质
 const material = new THREE.MeshBasicMaterial({
   color: 0x00ff00,
   wireframe: true,
 })
-// 创建材质2
-const material2 = new THREE.MeshBasicMaterial({
-  color: 0xff0000,
-})
 // 创建网格
-const cube = new THREE.Mesh(geometry, [material, material2])
-
-const box = new THREE.BoxGeometry(1, 1, 1)
-const material1 = new THREE.MeshBasicMaterial({ color: 0x0000ff })
-const material3 = new THREE.MeshBasicMaterial({ color: 0xff00ff })
-const material4 = new THREE.MeshBasicMaterial({ color: 0xffffff })
-const material5 = new THREE.MeshBasicMaterial({ color: 0xffff00 })
-const material6 = new THREE.MeshBasicMaterial({ color: 0x00ffff })
-
-const boxMesh = new THREE.Mesh(box, [
-  material1,
-  material2,
-  material3,
-  material4,
-  material5,
-  material6,
-])
-boxMesh.position.set(2, 0, 0)
-
-scene.add(boxMesh)
+const cube = new THREE.Mesh(geometry, material)
 
 // 添加坐标系辅助线
 const axisHelper = new THREE.AxesHelper(5)
